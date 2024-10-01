@@ -6,6 +6,10 @@ before:
 
 archives:
   - name_template: "{{ .ProjectName }}_{{ .Version }}.{{ .Os }}-{{ .Arch }}"
+    format: 'binary'
+    id: "binary"
+  - name_template: "{{ .ProjectName }}_{{ .Version }}.{{ .Os }}-{{ .Arch }}"
+    id: "archive"
 
 builds:
   - env:
@@ -69,7 +73,7 @@ source:
   enabled: true
 
 sboms:
-  - artifacts: archive
+  - artifacts: binary
   - id: source
     artifacts: source
 
