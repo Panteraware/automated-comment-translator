@@ -1,14 +1,15 @@
 package main
 
-import "regexp"
+import (
+	"strings"
+)
 
 func Format(text string) string {
-	// Removes all special characters from string
-	re, _ := regexp.Compile("/[^\\w\\s]/gi")
+	array := AcceptedCommentSyntax()
 
-	text = re.FindString(text)
-
-	// Still more replacements left
+	for i := 0; i < len(text); i++ {
+		text = strings.ReplaceAll(text, array[i], "")
+	}
 
 	return text
 }
